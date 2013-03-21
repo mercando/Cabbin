@@ -1,4 +1,10 @@
 Cabbinapp::Application.routes.draw do
+  resources :likes
+
+
+  resources :check_ins
+
+
   resources :cabs
 
 
