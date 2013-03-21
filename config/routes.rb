@@ -1,4 +1,7 @@
 Cabbinapp::Application.routes.draw do
+  resources :cabs
+
+
   devise_for :users
 
   get "pages/home"

@@ -1,0 +1,23 @@
+<h1>Listing cabs</h1>
+
+<table>
+  <tr>
+    <th>Medallion number</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cabs.each do |cab| %>
+  <tr>
+    <td><%= cab.medallion_number %></td>
+    <td><%= link_to 'Show', cab %></td>
+    <td><%= link_to 'Edit', edit_cab_path(cab) %></td>
+    <td><%= link_to 'Destroy', cab, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cab', new_cab_path %>
