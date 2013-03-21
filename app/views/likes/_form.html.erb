@@ -13,11 +13,10 @@
 
   <div class="field">
     <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
+    <%= f.select :user_id, User.all.map {|p| [p.email, p.id]} %>
+
     <%= f.label :check_in_id %><br />
-    <%= f.number_field :check_in_id %>
+    <%= f.select :check_in_id, CheckIn.all.map {|p| [p.story, p.id]} %>
   </div>
   <div class="actions">
     <%= f.submit %>
