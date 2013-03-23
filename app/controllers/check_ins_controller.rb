@@ -1,4 +1,6 @@
 class CheckInsController < ApplicationController
+  before_filter :authenticate_user!, except: [:index]
+
   # GET /check_ins
   # GET /check_ins.json
   def index
@@ -24,7 +26,7 @@ class CheckInsController < ApplicationController
   # GET /check_ins/new
   # GET /check_ins/new.json
   def new
-    @check_in = CheckIn.new
+    @check_in =  current_user.check_ins.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +36,13 @@ class CheckInsController < ApplicationController
 
   # GET /check_ins/1/edit
   def edit
-    @check_in = CheckIn.find(params[:id])
+    @check_in = current_user.check_ins.find(params[:id])
   end
 
   # POST /check_ins
   # POST /check_ins.json
   def create
-    @check_in = CheckIn.new(params[:check_in])
+    @check_in = current_user.check_ins.new(params[:check_in])
 
     respond_to do |format|
       if @check_in.save
@@ -56,7 +58,7 @@ class CheckInsController < ApplicationController
   # PUT /check_ins/1
   # PUT /check_ins/1.json
   def update
-    @check_in = CheckIn.find(params[:id])
+    @check_in = current_user.check_ins.find(params[:id])
 
     respond_to do |format|
       if @check_in.update_attributes(params[:check_in])
@@ -72,7 +74,7 @@ class CheckInsController < ApplicationController
   # DELETE /check_ins/1
   # DELETE /check_ins/1.json
   def destroy
-    @check_in = CheckIn.find(params[:id])
+    @check_in = current_user.check_ins.find(params[:id])
     @check_in.destroy
 
     respond_to do |format|

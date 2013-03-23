@@ -1,0 +1,8 @@
+<tr>
+  <td><%= check_in.story %></td>
+  <td><%= check_in.user.email %></td>
+  <td><%= check_in.cab.medallion_number %></td>
+  <td><%= link_to 'Show', check_in %></td>
+  <td><%= link_to 'Edit', edit_check_in_path(check_in) %></td>
+  <td><%= link_to 'Destroy', check_in, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
