@@ -2,7 +2,12 @@ class CabsController < ApplicationController
   # GET /cabs
   # GET /cabs.json
   def index
-    @cabs = Cab.all
+    # @cabs = Cab.all
+    @cabs = Cab.search(params[:search])
+
+    if @cabs.size == 1 
+      return redirect_to @cabs.first
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +18,10 @@ class CabsController < ApplicationController
   # GET /cabs/1
   # GET /cabs/1.json
   def show
-    @cab = Cab.find(params[:id])
+    @cab = Cab.find_by_medallion_number(params[:id])
+
+    @check_ins = @cab.check_ins(params[:id])
+    @comments = @cab.comments(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -79,5 +87,10 @@ class CabsController < ApplicationController
       format.html { redirect_to cabs_url }
       format.json { head :no_content }
     end
+  end
+
+  def import
+    Cab.import(params[:file])
+    redirect_to root_url, notice: "Cabs imported."
   end
 end

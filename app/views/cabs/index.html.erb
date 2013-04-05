@@ -1,8 +1,14 @@
 <h1>Listing cabs</h1>
 
+<h4>Import Cabs</h4>
+<%= form_tag import_cabs_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
+
 <table>
   <tr>
-    <th>Medallion number</th>
+    <th>Medallion number!</th>
     <th></th>
     <th></th>
     <th></th>

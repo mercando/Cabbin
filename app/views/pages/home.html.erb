@@ -2,8 +2,8 @@
 	<h4>Medallion Number</h4>
 	<%= form_tag cabs_path, :method => 'get' do %>
 		<p>
-			<%= text_field_tag :search %>
-			<%= submit_tag "Go", :name => nil, :class => "btn" %>
+			<%= text_field_tag :search, params[:search] %>
+	    <%= submit_tag "Search", :name => nil %>
 		</p>
 	<% end %>
 <% else %>

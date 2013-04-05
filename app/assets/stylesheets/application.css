@@ -314,3 +314,28 @@ input[type="radio"],
 input[type="checkbox"] {
   width: auto;
 }
+
+.mobile{
+  width: 480px;
+  margin: 20px;
+}
+
+.stats span{
+  font-weight: bold;
+}
+
+.comment {
+  color: #4f450a;
+  padding: 7px 30px 25px;
+  background-color: #f8f5e6;
+}
+
+.comment p {
+  color: #4f450a;
+}
+
+.comment small {
+    font-size: 14px;
+    color: #aea678;
+}
+

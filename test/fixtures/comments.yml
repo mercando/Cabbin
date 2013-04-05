@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  comment: MyString
+  user_id: 1
+  check_in_id: 1
+  cab_id: 1
+
+two:
+  comment: MyString
+  user_id: 1
+  check_in_id: 1
+  cab_id: 1

@@ -1,0 +1,24 @@
+<h1>Listing comments</h1>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Comment</th>
+      <th>User</th>
+      <th>Check in</th>
+      <th>Cab</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr> 
+  </thead>
+
+  <tbody>
+    <%= render @comments %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Comment', new_comment_path %>

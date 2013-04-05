@@ -1,12 +1,15 @@
 Cabbinapp::Application.routes.draw do
+  resources :comments
+
+
   resources :likes
 
 
   resources :check_ins
 
-
-  resources :cabs
-
+  resources :cabs do
+    collection { post :import }
+  end
 
   devise_for :users
 
@@ -14,6 +17,8 @@ Cabbinapp::Application.routes.draw do
 
   root :to => 'pages#home'
   get 'about' => 'pages#about'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

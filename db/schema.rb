@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130321033843) do
+ActiveRecord::Schema.define(:version => 20130405184300) do
 
   create_table "cabs", :force => true do |t|
     t.string   "medallion_number"
@@ -29,6 +29,19 @@ ActiveRecord::Schema.define(:version => 20130321033843) do
 
   add_index "check_ins", ["cab_id"], :name => "index_check_ins_on_cab_id"
   add_index "check_ins", ["user_id"], :name => "index_check_ins_on_user_id"
+
+  create_table "comments", :force => true do |t|
+    t.string   "comment"
+    t.integer  "user_id"
+    t.integer  "check_in_id"
+    t.integer  "cab_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "comments", ["cab_id"], :name => "index_comments_on_cab_id"
+  add_index "comments", ["check_in_id"], :name => "index_comments_on_check_in_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "likes", :force => true do |t|
     t.integer  "user_id"
@@ -53,6 +66,8 @@ ActiveRecord::Schema.define(:version => 20130321033843) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "username"
+    t.string   "index"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
