@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130405184300) do
+ActiveRecord::Schema.define(:version => 20130413183309) do
 
   create_table "cabs", :force => true do |t|
     t.string   "medallion_number"
@@ -31,16 +31,20 @@ ActiveRecord::Schema.define(:version => 20130405184300) do
   add_index "check_ins", ["user_id"], :name => "index_check_ins_on_user_id"
 
   create_table "comments", :force => true do |t|
-    t.string   "comment"
-    t.integer  "user_id"
-    t.integer  "check_in_id"
-    t.integer  "cab_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "commentable_id",   :default => 0
+    t.string   "commentable_type", :default => ""
+    t.string   "title",            :default => ""
+    t.text     "body",             :default => ""
+    t.string   "subject",          :default => ""
+    t.integer  "user_id",          :default => 0,  :null => false
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
-  add_index "comments", ["cab_id"], :name => "index_comments_on_cab_id"
-  add_index "comments", ["check_in_id"], :name => "index_comments_on_check_in_id"
+  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "likes", :force => true do |t|

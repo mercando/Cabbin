@@ -21,7 +21,6 @@ class CabsController < ApplicationController
     @cab = Cab.find_by_medallion_number(params[:id])
 
     @check_ins = @cab.check_ins(params[:id])
-    @comments = @cab.comments(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

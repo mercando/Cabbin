@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.12'
 gem 'devise'
 gem 'jquery-rails'
+gem 'acts_as_commentable_with_threading'
 
 group :production do
   gem 'pg'

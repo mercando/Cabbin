@@ -2,11 +2,12 @@ class Cab < ActiveRecord::Base
   attr_accessible :medallion_number
 
   has_many :check_ins
-  has_many :comments
 
   validates :medallion_number, presence: true, uniqueness: true
 
-   def to_param  # overridden
+  acts_as_commentable
+
+	def to_param  # overridden
     medallion_number
   end
 

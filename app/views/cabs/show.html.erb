@@ -6,12 +6,7 @@
 </p>
 
 <div class="mobile stats">
-	<p><%= @check_ins.count %> Checkins &middot <%= @comments.count %> Stories</p>
+	<p><%= @check_ins.count %> Checkins &middot # Stories</p>
 </div>
 
-<% @comments.each do |comment| %>
-    <div class="mobile comment">
-    <p><%= comment.comment %></p>
-    <small><%= comment.user.username %> &middot <%= time_ago_in_words(comment.created_at) %> ago</small>
-    </div>
-<% end %>
+
