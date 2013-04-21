@@ -5,7 +5,11 @@ class CabsController < ApplicationController
     # @cabs = Cab.all
     @cabs = Cab.search(params[:search])
 
-    if @cabs.size == 1 
+    if @cabs.size == 1
+      @currentCheckIn = CheckIn.new(:user_id => current_user.id, :cab_id => @cabs.first.id) 
+      @currentCheckIn.save
+
+      flash[:notice] = 'you just created a checkin'
       return redirect_to @cabs.first
     end
 

@@ -1,17 +1,24 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Medallion number:</b>
   <%= @cab.medallion_number %>
+
 </p>
 
 <div class="mobile stats">
 	<p><%= @check_ins.count %> Checkins &middot <%= @comments.count %> Stories</p>
 </div>
 
+
 <% @comments.each do |comment| %>
     <div class="mobile comment">
     <p><%= comment.comment %></p>
     <small><%= comment.user.username %> &middot <%= time_ago_in_words(comment.created_at) %> ago</small>
     </div>
+<% end %>
+
+<%= simple_form_for @comments.new do |f| %>
+  <%= f.input :comment %>
+  <%= f.input :cab_id, :as => :hidden, :value => @cab.id %>
+  <%= f.input :check_in_id, :as => :hidden, :value => @testval %>
+  <%= f.button :submit %>
 <% end %>
