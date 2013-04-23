@@ -11,6 +11,8 @@ Cabbinapp::Application.routes.draw do
     collection { post :import }
   end
 
+  resources :comments, :only => [:create, :destroy]
+
   devise_for :users
 
   get "pages/home"
